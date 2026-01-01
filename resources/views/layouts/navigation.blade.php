@@ -258,19 +258,9 @@
 }
 
 /* Botón de cerrar sesión */
-/* Botón cerrar sesión */
-.navbar-custom .dropdown-item button {
-    background: none;
-    border: none;
-    padding: 8px 16px;
+.navbar-custom .dropdown-item form {
+    margin: 0;
     width: 100%;
-    text-align: left;
-    color: #212529;
-    cursor: pointer;
-}
-
-.navbar-custom .dropdown-item button:hover {
-    background-color: #f8f9fa;
 }
 
 .navbar-custom .dropdown-item button {
