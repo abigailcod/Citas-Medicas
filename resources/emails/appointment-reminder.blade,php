@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Cita</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .email-header {
+            background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .email-header .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        .email-body {
+            padding: 40px 30px;
+        }
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .alert-box h2 {
+            margin: 0 0 10px 0;
+            color: #856404;
+            font-size: 20px;
+        }
+        .alert-box p {
+            margin: 0;
+            color: #856404;
+            font-size: 16px;
+        }
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .info-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        .info-content {
+            flex: 1;
+        }
+        .info-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        .btn-confirm {
+            display: inline-block;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .btn-cancel {
+            display: inline-block;
+            background: #6c757d;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin: 20px 10px;
+        }
+        .email-footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .important-note {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .important-note p {
+            margin: 0;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <div class="icon">⏰</div>
+            <h1>Recordatorio de Cita Médica</h1>
+            <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.95;">
+                Tu cita está próxima
+            </p>
+        </div>
+
+        <!-- Body -->
+        <div class="email-body">
+            <!-- Alert Box -->
+            <div class="alert-box">
+                <h2>⚠️ Tu cita es en {{ $hoursUntil }} horas</h2>
+                <p>No olvides asistir a tu cita médica programada</p>
+            </div>
+
+            <p style="font-size: 16px; color: #333; margin-bottom: 25px;">
+                Hola <strong>{{ $appointment->patient->user->name }}</strong>,
+            </p>
+
+            <p style="font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 30px;">
+                Te recordamos que tienes una cita médica programada con el 
+                <strong>Dr. {{ $appointment->doctor->user->name }}</strong> 
+                en las próximas <strong>{{ $hoursUntil }} horas</strong>.
+            </p>
+
+            <!-- Información de la Cita -->
+            <div class="info-card">
+                <div class="info-row">
+                    <div class="info-icon">📅</div>
+                    <div class="info-content">
+                        <div class="info-label">FECHA</div>
+                        <div class="info-value">
+                            {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d/m/Y') }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-content">
+                        <div class="info-label">HORA</div>
+                        <div class="info-value">
+                            {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('H:i') }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">👨‍⚕️</div>
+                    <div class="info-content">
+                        <div class="info-label">DOCTOR</div>
+                        <div class="info-value">
+                            Dr. {{ $appointment->doctor->user->name }}
+                        </div>
+                    </div>
+                </div>
+
+                @if($appointment->motivo)
+                <div class="info-row">
+                    <div class="info-icon">📋</div>
+                    <div class="info-content">
+                        <div class="info-label">MOTIVO</div>
+                        <div class="info-value">
+                            {{ $appointment->motivo }}
+                        </div>
+                    </div>
+                </div>
+                @endif
+            </div>
+
+            <!-- Botones de Acción -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{ url('/appointments') }}" class="btn-confirm">
+                    ✓ Ver Mis Citas
+                </a>
+            </div>
+
+            <!-- Nota Importante -->
+            <div class="important-note">
+                <p>
+                    <strong>💡 Importante:</strong> 
+                    Por favor, llega 10 minutos antes de tu cita. 
+                    Si no puedes asistir, cancela con al menos 24 horas de anticipación.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <p style="margin: 0 0 10px 0;">
+                <strong>MedicCitas</strong> - Sistema de Gestión de Citas Médicas
+            </p>
+            <p style="margin: 0; font-size: 12px;">
+                Este es un mensaje automático, por favor no respondas a este correo.
+            </p>
+            <p style="margin: 10px 0 0 0; font-size: 12px;">
+                © {{ date('Y') }} MedicCitas. Todos los derechos reservados.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

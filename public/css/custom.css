@@ -1,0 +1,500 @@
+/* ============================================
+   SISTEMA DE CITAS MÉDICAS - ESTILOS PERSONALIZADOS
+   ============================================ */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --medical-blue: #1e88e5;
+    --medical-green: #43a047;
+    --medical-purple: #8e24aa;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --gradient-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    --gradient-medical: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* ============================================
+   NAVBAR MEJORADA
+   ============================================ */
+
+.navbar-custom {
+    background: var(--gradient-medical) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1rem 0;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-custom .navbar-brand i {
+    font-size: 1.8rem;
+    animation: pulse 2s infinite;
+}
+
+.navbar-custom .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-custom .nav-link:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.navbar-custom .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white !important;
+    font-weight: bold;
+}
+
+/* ============================================
+   DROPDOWN DE USUARIO (NAVBAR)
+   ============================================ */
+
+.navbar-custom .dropdown-menu {
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    min-width: 280px;
+    padding: 0.5rem 0;
+    animation: fadeInDown 0.3s ease;
+}
+
+.navbar-custom .dropdown-header {
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-weight: 600;
+    background: #f8f9fa;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-custom .dropdown-item {
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+    color: #333;
+    font-weight: 500;
+    border-radius: 6px;
+    margin: 0.25rem 0.5rem;
+}
+
+.navbar-custom .dropdown-item i {
+    width: 25px;
+    text-align: center;
+}
+
+.navbar-custom .dropdown-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateX(5px);
+}
+
+.navbar-custom .dropdown-item.text-danger:hover {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    color: white;
+}
+
+.navbar-custom .dropdown-toggle::after {
+    margin-left: 0.5rem;
+    vertical-align: 0.2em;
+}
+
+.navbar-custom .dropdown-divider {
+    margin: 0.5rem 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Badge en el nombre de usuario */
+.navbar-custom .badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Botón de cerrar sesión dentro del dropdown */
+.navbar-custom .dropdown-item form {
+    margin: 0;
+}
+
+.navbar-custom .dropdown-item button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+}
+
+/* ============================================
+   NAVBAR TOGGLER (Mobile)
+   ============================================ */
+
+.navbar-custom .navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+}
+
+.navbar-custom .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/* ============================================
+   RESPONSIVE NAVBAR
+   ============================================ */
+
+@media (max-width: 991px) {
+    .navbar-custom .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .navbar-custom .nav-link {
+        color: #333 !important;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+    }
+    
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .nav-link.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white !important;
+    }
+    
+    .navbar-custom .dropdown-menu {
+        border: none;
+        box-shadow: none;
+        padding-left: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .navbar-custom .dropdown-item {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .navbar-custom .badge {
+        display: block;
+        margin-top: 0.25rem;
+        width: fit-content;
+    }
+}
+
+/* ============================================
+   TARJETAS ESTADÍSTICAS (DASHBOARD)
+   ============================================ */
+
+.stat-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card-primary {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.stat-card-success {
+    background: var(--gradient-success);
+    color: white;
+}
+
+.stat-card-danger {
+    background: var(--gradient-danger);
+    color: white;
+}
+
+.stat-card-medical {
+    background: var(--gradient-medical);
+    color: white;
+}
+
+.stat-card .card-body {
+    padding: 2rem;
+}
+
+.stat-card .stat-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.stat-card .stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   BOTONES MODERNOS
+   ============================================ */
+
+.btn-modern {
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-modern::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-modern:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   TABLAS MEJORADAS
+   ============================================ */
+
+.table-modern {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table-modern thead {
+    background: var(--gradient-medical);
+    color: white;
+}
+
+.table-modern thead th {
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.table-modern tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-modern tbody tr:hover {
+    background-color: rgba(30, 136, 229, 0.05);
+    transform: scale(1.01);
+}
+
+.table-modern tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* ============================================
+   BADGES MEJORADOS
+   ============================================ */
+
+.badge-modern {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   CARDS MEJORADAS
+   ============================================ */
+
+.card-modern {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card-modern:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-modern .card-header {
+    background: var(--gradient-medical);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.card-modern .card-header h4 {
+    margin: 0;
+    font-weight: 700;
+}
+
+/* ============================================
+   ALERTAS MEJORADAS
+   ============================================ */
+
+.alert-modern {
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   HERO SECTION (Para página de inicio)
+   ============================================ */
+
+.hero-section {
+    background: var(--gradient-medical);
+    color: white;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .stat-card .stat-number {
+        font-size: 2rem;
+    }
+    
+    .navbar-custom .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
